@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ng-mf/data-access-user": ["libs/shared/data-access-user/src/index.ts"],
+      // "login/Routes": ["apps/login/src/app/remote-entry/entry.routes.ts"],
+      "meeting/Routes": ["apps/meeting/src/app/remote-entry/entry.routes.ts"],
+      "room/Routes": ["apps/room/src/app/remote-entry/entry.routes.ts"],
+      // "signup/Routes": ["apps/signup/src/app/remote-entry/entry.routes.ts"],
+      "auth/Routes": ["apps/auth/src/app/remote-entry/entry.routes.ts"],
+      "user/Routes": ["apps/user/src/app/remote-entry/entry.routes.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

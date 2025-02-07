@@ -1,0 +1,61 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Dependency directories
+dist/
+build/
+
+# Angular specific
+.angular/
+.angular-cache/
+src/environments/environment.*.ts
+
+# NestJS specific
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+.tmp/
+*.log
+.idea/
+.vscode/
+coverage/
+nestjs-cli.json
+
+# Compiled output
+out-tsc/
+tmp/
+temp/
+*.js.map
+*.d.ts.map
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# MacOS
+.DS_Store
+
+# Misc
+*.bak
+*.old

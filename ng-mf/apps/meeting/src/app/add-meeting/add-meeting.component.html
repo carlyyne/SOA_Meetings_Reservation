@@ -1,0 +1,126 @@
+<body class="flex justify-center items-center bg-custom-wallpaper">
+    <div class="h-screen flex-col justify-center items-center">
+        <p class="text-center font-medium size-title text-white">New Meeting</p>
+        <div class="bg-white shadow-xlg rounded-xlg padding-perso">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="space-y-2">
+                <!-- Title Field -->
+                <div class="space-y-2">
+                    <label for="title" class="block font-medium text-gray-900 py-2">Title</label>
+                    <input type="text" id="title" ngModel name="title" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Daily meeting" required />
+                    <div *ngIf="f.value.title === '' && submit" class="text-red-700">
+                        Enter a title
+                    </div>
+                </div>
+
+                <!-- Room Selection Field -->
+                <div class="space-y-2">
+                    <label for="roomId" class="block font-medium text-gray-900 py-2">Room Name</label>
+                    <select id="roomId" ngModel name="roomId" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <option value="" disabled selected>Select a room</option>
+                        <option *ngFor="let room of rooms" [value]="room._id">{{ room.name }}</option>
+                    </select>
+                    <div *ngIf="f.value.roomName === '' && submit" class="text-red-700">
+                        Select a room
+                    </div>
+                </div>
+
+                <!-- Date Field -->
+                <div class="space-y-2">
+                    <label for="date" class="block font-medium text-gray-900 py-2">Date</label>
+                    <input type="date" id="date" ngModel name="date" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                    <div *ngIf="f.value.date === '' && submit" class="text-red-700">
+                        Enter a date
+                    </div>
+                </div>
+
+                <!-- Start Time Field -->
+                <div class="space-y-2">
+                    <label for="startTime" class="block font-medium text-gray-900 py-2">Start Time</label>
+                    <input type="time" id="startTime" ngModel name="startTime" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                    <div *ngIf="f.value.startTime === '' && submit" class="text-red-700">
+                        Enter a start time
+                    </div>
+                </div>
+
+                <!-- End Time Field -->
+                <div class="space-y-2">
+                    <label for="endTime" class="block font-medium text-gray-900 py-2">End Time</label>
+                    <input type="time" id="endTime" ngModel name="endTime" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                    <div *ngIf="f.value.endTime === '' && submit" class="text-red-700">
+                        Enter an end time
+                    </div>
+                </div>
+
+                <!-- Participants Field -->
+                <div class="flex items-center" style="justify-content: space-between;" >
+                    <label for="participants" class="block font-medium text-gray-900 py-2">Participants</label>
+                    <button 
+                        id="participants" 
+                        data-dropdown-toggle="dropdownSearch" 
+                        class="flex-row items-center text-sm font-medium text-white bg-grey rounded-lg px-3 py-2 shadow-xlg" 
+                        style="margin: 20px 0px 20px 0px;"
+                        type="button" 
+                        (click)="toggleDropdown()">
+                        <svg 
+                            class="w-4 h-4" 
+                            aria-hidden="true" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Search -->
+                    <div id="dropdownSearch" 
+                        class="z-10 bg-white rounded-lg shadow-xlg w-60 dark:bg-gray-700 pad"
+                        [ngClass]="{'hidden': !isDropdownOpen, 'block': isDropdownOpen}">
+                        <ul class="px-3 overflow-y-auto text-gray-700 dark:text-gray-200" aria-labelledby="participants">
+                            <li *ngFor="let participant of participants">
+                                <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
+                                    <input 
+                                        id="checkbox-{{participant.username}}" 
+                                        type="checkbox" 
+                                        [value]="participant.username" 
+                                        [(ngModel)]="participant.selected" 
+                                        (change)="onParticipantSelection(participant)" 
+                                        name="participants"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label 
+                                        for="checkbox-{{participant.username}}" 
+                                        class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm dark:text-gray-300 px-4">
+                                        {{ participant.username }}
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div *ngIf="f.value.participants === '' && submit" class="text-red-700">
+                        Select at least one participant
+                    </div>
+                </div>
+                <!-- Description Field -->
+                <div class="space-y-2">
+                    <label for="description" class="block font-medium text-gray-900 py-2">Description</label>
+                    <textarea id="description" ngModel name="description" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Meeting description"></textarea>
+                </div>
+                
+                <!-- Submit and Cancel Buttons -->
+                <div class="flex-col justify-center">
+                    <div class="flex justify-center">
+                        <button type="submit" class="text-white bg-custom shadow-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center m-5">
+                            Save
+                        </button>
+                        <button [routerLink]="['/']" class="text-white bg-red-700 shadow-lg font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center m-5">
+                            Cancel
+                        </button>
+                    </div>
+                    <ng-container *ngIf="errorAdditionExist()">
+                        <p class="text-red-700 flex justify-center"> {{ errorAddition.message }}</p>
+                    </ng-container>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

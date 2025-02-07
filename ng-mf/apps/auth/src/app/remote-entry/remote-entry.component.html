@@ -1,0 +1,34 @@
+<body class="flex justify-center items-center width-perso bg-custom">
+    <div class="h-screen flex-col justify-center items-center">
+      <p class="text-center font-medium size-title text-white">{{ isSignup ? 'Sign Up' : 'Sign In' }}</p>
+      
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="space-y-6 bg-white rounded-xlg shadow-xlg padding-perso">
+        <div class="space-y-3">
+          <label for="username" class="block font-medium text-gray-90">Your username</label>
+          <input type="text" id="username" ngModel name="username" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="username" required />
+        </div>
+        
+        <div class="space-y-3" *ngIf="isSignup">
+          <label for="email" class="block font-medium text-gray-900">Your email</label>
+          <input type="email" id="email" ngModel name="email" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="example@example.com" required />
+        </div>
+        
+        <div class="space-y-3">
+          <label for="password" class="block font-medium text-gray-900">Your password</label>
+          <input type="password" id="password" ngModel name="password" class="shadow-lg custom-input border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="password" required />
+        </div>
+        
+        <div class="flex-col justify-center">
+          <button type="submit" class="text-white bg-custom shadow-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5">
+            Submit
+          </button>
+          <p class="text-center text-gray-500 underline cursor-pointer" (click)="toggleMode()">
+            {{ isSignup ? 'Already a member? Sign In' : 'Not a member? Sign Up' }}
+          </p>
+          <ng-container *ngIf="errorConnexionExist()">
+            <p class="text-red-700 flex justify-center pt-5">{{ errorConnexion.message }}</p>
+          </ng-container>
+        </div>
+      </form>
+    </div>
+  </body>

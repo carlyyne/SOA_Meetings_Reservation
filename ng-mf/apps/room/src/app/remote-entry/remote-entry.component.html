@@ -1,0 +1,45 @@
+
+<router-outlet></router-outlet>
+<div class="relative overflow-x-auto p-4 bg-white h-screen">
+    <div class="m-15 items-center flex-between">
+      <p class="font-medium size-title m-15">Meeting Rooms</p>
+      <button [routerLink]="['add']" class="text-white bg-custom font-medium rounded-lg px-5 py-2.5">
+          + Add room
+      </button>
+    </div>
+
+    <table class="shadow-xlg rounded-xlg w-full text-sm text-left rtl:text-right">
+        <thead class="uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-6 text-center">Room name</th>
+                <th scope="col" class="px-6 py-6 text-center">Capacity</th>
+                <th scope="col" class="px-6 py-6 text-center">Resources</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of rooms" class="py-6">
+                <td class="text-center">{{ room.name }}</td>
+                <td class="text-center">{{ room.capacity }}</td>
+                <td class="text-center">
+                  <ul>
+                    <li *ngFor="let resource of room.resources">{{ resource }}</li>
+                  </ul>
+                </td>
+                <td class="text-center flex justify-center items-center space-x-2 m-5">
+                    <button
+                        type="button"
+                        [routerLink]="['edit', room.name]"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5">
+                        Edit
+                    </button>
+                  <button 
+                      type="button" 
+                      (click)="deleteRoom(room._id || '')" 
+                      class="text-white bg-red-700 font-medium rounded-lg px-5 py-2.5">
+                      Delete
+                  </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

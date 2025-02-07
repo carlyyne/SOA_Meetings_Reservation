@@ -1,0 +1,6 @@
+{
+  "auth": "http://localhost:4201/mf-manifest.json",
+  "room": "http://localhost:4202/mf-manifest.json",
+  "meeting": "http://localhost:4204/mf-manifest.json",
+  "user": "http://localhost:4205/mf-manifest.json"
+}

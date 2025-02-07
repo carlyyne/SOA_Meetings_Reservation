@@ -1,0 +1,14 @@
+<!-- Afficher le menu si l'utilisateur est connecté -->
+<div *ngIf="isLoggedIn$ | async ; else signIn">
+  <div class="menu">
+    <a routerLink="room" class="menu-link">Room</a>
+    <a routerLink="meeting" class="menu-link">Meeting</a>
+    <a routerLink="user" class="menu-link">Profile</a>
+    <button (click)="logout()" class="logout-button">Logout</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #signIn>
+  <router-outlet></router-outlet>
+</ng-template>

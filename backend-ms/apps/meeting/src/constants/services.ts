@@ -1,0 +1,3 @@
+export const ROOM_SERVICE = 'ROOM';
+export const AUTH_SERVICE = 'AUTH';
+export const NOTIFICATION_SERVICE_KAFKA = 'NOTIFICATION';
