@@ -1,3 +1,5 @@
+The aim of the project is to reserve meeting rooms in a company. To create a meeting, you need to choose the room, participants, date and time.
+
 # SOA_Meetings_Reservations
 
 To start the entire project, simply run the following command at the root of the project:  
