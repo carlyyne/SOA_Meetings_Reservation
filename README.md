@@ -35,6 +35,9 @@ There are **4 microservices**:
 
 ### Here you can find a little demo :
 
+**Sign Up**
+<img width="1710" alt="Capture d’écran 2025-02-07 à 18 33 46" src="https://github.com/user-attachments/assets/9b479696-7d0f-4631-b2b5-8a33fdb153d1" />
+
 *Before connexion: no cookie*
 <img width="1710" alt="Capture d’écran 2025-02-07 à 17 59 20" src="https://github.com/user-attachments/assets/7e544446-648f-4e7e-a939-dcf066b51b8f" />
 
@@ -59,4 +62,5 @@ This method use Kafka and RabbitMQ.
 <img width="1151" alt="Capture d’écran 2025-02-07 à 18 02 56" src="https://github.com/user-attachments/assets/ef0e90bd-6ff4-4f01-a0f6-cb6023f76a2e" />
 
 - RabbitMQ: connexion with Room service and Auth service to get the user connected and tu check room availability.
-
+If a room is already reserved at a given time, a message is displayed:
+<img width="1710" alt="Capture d’écran 2025-02-07 à 18 34 35" src="https://github.com/user-attachments/assets/6a146264-e232-4fe3-8815-d7daa116bdf3" />
